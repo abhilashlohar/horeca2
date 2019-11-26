@@ -20,4 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('years','YearController');
+Route::resource('categories','CategoryController');
+Route::resource('subcategories','SubCategoryController');
