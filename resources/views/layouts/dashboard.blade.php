@@ -54,12 +54,23 @@
               </a>
             </li>
             <li class="nav-item p-1">
-              <a class="nav-link" href="#" style="text-align: center;">
+              <a class="nav-link" href="{{route('categories.index')}}" style="text-align: center;">
                 <img src="/img/list.png" style="height: 40px;"><br/>
                 <span style=" color: #FEFEFE; font-size: 14px;">  Category </span> 
               </a>
             </li>
-            
+            <li class="nav-item p-1">
+              <a class="nav-link" href="{{route('subcategories.index')}}" style="text-align: center;">
+                <img src="/img/maintenance.png" style="height: 40px;"><br/>
+                <span style=" color: #FEFEFE; font-size: 14px;">  Sub Category </span> 
+              </a>
+            </li>
+            <li class="nav-item p-1">
+              <a class="nav-link" href="#" style="text-align: center;">
+                <img src="/img/product.png" style="height: 40px;"><br/>
+                <span style=" color: #FEFEFE; font-size: 14px;">  Product </span> 
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
