@@ -120,4 +120,10 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')
                         ->with('success','Category deleted successfully');
     }
+
+
+    public static function list()
+    {
+        return $categories = Category::all();
+    }
 }

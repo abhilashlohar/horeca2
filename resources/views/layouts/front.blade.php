@@ -1,7 +1,10 @@
 <?php 
-use \App\Http\Controllers\HomeController;
+use \App\Http\Controllers\CategoryController;
 ?>
-<?php echo HomeController::xyz();?>
+<?php 
+$categories = CategoryController::list();
+
+?>
 <!doctype html>
 <html>
     
@@ -58,14 +61,13 @@ use \App\Http\Controllers\HomeController;
                                       </a>
 
                                       <div class="dropdown-menu drop-items" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="category.html">Kitchen Equipment &amp; Utilities</a>
-                                        <a class="dropdown-item" href="#">In Room Solutions</a>
-                                        <a class="dropdown-item" href="#">Bathroom Equipments</a>
-                                        <a class="dropdown-item" href="#">House Keeping Solutions</a>
-                                        <a class="dropdown-item" href="#">Large Consumer Appliances</a>
-                                        <a class="dropdown-item" href="#">Cookware &amp; Utensils</a>
-                                        <a class="dropdown-item" href="#">Interior Solutions</a>
-                                         <a class="dropdown-item" href="#"> Display Counters, Solar Equipments &amp; Appliances and DTH Service Provider </a>
+                                        
+                                        <?php 
+                                        foreach ($categories as $category) { ?>
+                                            <a class="dropdown-item" href="#"><?php echo $category->name ?></a>
+                                        <?php }
+                                        ?>
+                                        
                                       </div>
                                     </div>
                                 </li>

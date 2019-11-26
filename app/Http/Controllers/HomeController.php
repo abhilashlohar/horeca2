@@ -30,8 +30,5 @@ class HomeController extends Controller
     {
         return view('contact');
     }
-    public static function xyz()
-    {
-        return "hello";
-    }
+    
 }
