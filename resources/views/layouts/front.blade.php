@@ -9,24 +9,11 @@ $categories = CategoryController::list();
 <html>
     
     <head>
-        <title>HORECA</title>
+        <title>{{ config('app.name') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/styleo.css">
-        <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flickity@2/dist/flickity.css">
-          <link rel="stylesheet" href="assets/css/responsive.css">
-          <link rel="shortcut icon" type="image/png" href="assets/img/h.PNG"/>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/script.js"></script>
-         <script src="assets/js/jquery-3.4.1.min.js"></script>
-        <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-                <script src="https://code.jquery.com/jquery-3.4.1.js"
-          integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-          crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/ac4e70cd8e.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
         
+
+        @yield ('headpart')
 
     </head>
     <body>
@@ -36,7 +23,7 @@ $categories = CategoryController::list();
 
                 <nav class="navbar navbar-expand-md navbar-light fixed-top">
                  
-                        <a class="navbar-brand" href="#home"><img src="assets/img/horeca-logo-2.png" width="200px"/></a>
+                        <a class="navbar-brand" href="{{ route('home') }}"><img src="<?php echo url('/'); ?>/assets/img/horeca-logo-2.png" width="200px"/></a>
 
                         <button type="button" class="navbar-toggler bg-light" data-toggle="collapse" data-target="#nav">
 
@@ -64,7 +51,7 @@ $categories = CategoryController::list();
                                         
                                         <?php 
                                         foreach ($categories as $category) { ?>
-                                            <a class="dropdown-item" href="#"><?php echo $category->name ?></a>
+                                            <a class="dropdown-item" href="{{ route('products.list', $category->id) }}"><?php echo $category->name ?></a>
                                         <?php }
                                         ?>
                                         
@@ -89,7 +76,7 @@ $categories = CategoryController::list();
             
                 <div class="col-sm-4">
                     <div class="">
-                        <img src="assets/img/horeca-logo-3.png" width="150">
+                        <img src="<?php echo url('/'); ?>/assets/img/horeca-logo-3.png" width="150">
                     </div>
                         
                 </div>
@@ -103,9 +90,9 @@ $categories = CategoryController::list();
 
                 <div class="col-sm-4">
                     <div class="">
-                        <a href="#"><img src="assets/img/icons/instagram.svg" width="15"></a>
-                        <span><a href="#"><img src="assets/img/icons/facebook-logo.svg" width="15"></a></span>
-                        <span><a href="#"><img src="assets/img/icons/whatsapp.svg" width="15"></a></span>
+                        <a href="#"><img src="<?php echo url('/'); ?>/assets/img/icons/instagram.svg" width="15"></a>
+                        <span><a href="#"><img src="<?php echo url('/'); ?>/assets/img/icons/facebook-logo.svg" width="15"></a></span>
+                        <span><a href="#"><img src="<?php echo url('/'); ?>/assets/img/icons/whatsapp.svg" width="15"></a></span>
                     </div>
                         
                 </div>
