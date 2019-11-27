@@ -82,7 +82,8 @@ $categories = CategoryController::list();
 
                 <div class="col-sm-4">
                     <div class="text-white">
-                        <p>202, Vinayak Residency, Close to Sona Resort, Sanganeri Road, Bhilwara (Raj.) - 313001 <span><button type="button" class="btn btn-light contactbutton">Get in Touch</button></span></p>
+                        <p>202, Vinayak Residency, Close to Sona Resort, Sanganeri Road, Bhilwara (Raj.) - 313001 </p>
+                            <button type="button" class="btn btn-light contactbutton">Get in Touch</button>
                     </div>
                         
                 </div>
