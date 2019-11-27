@@ -43,7 +43,7 @@ class HomeController extends Controller
     public static function products(Request $request)
     {
         $category = Category::where('id',$request->id)->first();
-        $SubCategories = SubCategory::with('products')->latest()->where('category_id',$request->id)->get();
+        $SubCategories = SubCategory::where('deleted',0)->with('products')->latest()->where('category_id',$request->id)->get();
 
         return view('products',compact('category', 'SubCategories'));
     }    
