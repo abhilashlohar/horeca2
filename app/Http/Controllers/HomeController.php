@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function __construct()
     {
 
-        $this->middleware('auth')->except(['home', 'contact', 'products', 'enquiry', 'saveenquiry']);;
+        $this->middleware('auth')->except(['home', 'contact', 'products', 'enquiry', 'saveenquiry', 'aboutus']);;
     }
 
     /**
@@ -34,6 +34,11 @@ class HomeController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    public function aboutus()
+    {
+        return view('aboutus');
     }
 
     public function dashboard()
