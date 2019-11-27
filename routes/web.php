@@ -22,6 +22,8 @@ Route::get('/', 'HomeController@home')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/product-list/{id}', 'HomeController@products')->name('products.list');
+Route::get('/enquiry/{id}', 'HomeController@enquiry')->name('enquiry');
+Route::post('/saveenquiry/{id}', 'HomeController@saveenquiry')->name('saveenquiry');
 
 Route::resource('categories','CategoryController');
 Route::resource('subcategories','SubCategoryController');
