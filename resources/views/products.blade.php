@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/jquery-ui.css">
 <link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/slick.css">
 <link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/ionicons.min.css">
-<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/bundle.css">
+<!-- <link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/bundle.css"> -->
 <link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/responsive.css">
     <!-- index index-->
 <link rel="stylesheet" type="text/css" href="<?php echo url('/'); ?>/assets/css/bootstrap.min.css">
