@@ -123,6 +123,6 @@ class CategoryController extends Controller
 
     public static function list()
     {
-        return $categories = Category::all();
+        return $categories = Category::where('deleted',0)->latest()->get();
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <span class="float-left">{{ __('Product') }}</span>
@@ -17,6 +17,7 @@
                             <th>Name</th>
                             <th>Category Name</th>
                             <th>Sub Category Name</th>
+                            <th>Image</th>
                             <th width="280px">Action</th>
                         </tr>
                         @foreach ($products as $product)
@@ -24,6 +25,9 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->subCategory->name }}</td>
+                            <td>
+                                <img src="{{ asset('uploads/'.$product->image_path) }}" width="100" height="100">
+                            </td>
                             <td>
                                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
 
@@ -37,6 +41,7 @@
                                     <button class="btn btn-sm btn-light" type="submit"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
+                            
                         </tr>
                         @endforeach
                     </table>
