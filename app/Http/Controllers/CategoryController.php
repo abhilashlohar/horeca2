@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\SubCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -113,11 +114,16 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->deleted = true;
-        $category->save();
-  
+        if(SubCategory::where('deleted', 1)->where('category_id',$category->id)->doesntExist())
+        {
+            $category->deleted = true;
+            $category->save();
+    
+            return redirect()->route('categories.index')
+                            ->with('success','Category deleted successfully');
+        }
         return redirect()->route('categories.index')
-                        ->with('success','Category deleted successfully');
+                            ->with('success','Category not deleted, exist in sub categories');
     }
 
 
