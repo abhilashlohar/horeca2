@@ -47,7 +47,7 @@
         <div class="sidebar-sticky">
           <ul class="nav flex-column">
             <li class="nav-item p-1">
-              <a class="nav-link" href="{{ route('home') }}" style="text-align: center;">
+              <a class="nav-link" href="{{ route('dashboard') }}" style="text-align: center;">
                 <!-- nav-active -->
                 <img src="/img/dashboard.png" style="height: 40px;"><br/>
                 <span style=" color: #FEFEFE; font-size: 14px;">  Dashboard </span> 
@@ -66,7 +66,7 @@
               </a>
             </li>
             <li class="nav-item p-1">
-              <a class="nav-link" href="#" style="text-align: center;">
+              <a class="nav-link" href="{{route('products.index')}}" style="text-align: center;">
                 <img src="/img/product.png" style="height: 40px;"><br/>
                 <span style=" color: #FEFEFE; font-size: 14px;">  Product </span> 
               </a>

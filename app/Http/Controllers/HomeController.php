@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\SubCategory;
+use App\Product;
+use App\Enquiry;
 
 class HomeController extends Controller
 {
@@ -13,7 +17,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+
+        $this->middleware('auth')->except(['home', 'contact', 'products', 'enquiry', 'saveenquiry']);;
     }
 
     /**
@@ -21,7 +26,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function home()
     {
         return view('home');
     }
@@ -30,5 +35,31 @@ class HomeController extends Controller
     {
         return view('contact');
     }
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+    public static function products(Request $request)
+    {
+        $category = Category::where('id',$request->id)->first();
+        $SubCategories = SubCategory::where('deleted',0)->with('products')->latest()->where('category_id',$request->id)->get();
+
+        return view('products',compact('category', 'SubCategories'));
+    }    
     
+    public static function enquiry(Request $request)
+    {
+        $product = Product::where('id',$request->id)->first();
+        return view('enquiry',compact('product'));
+    }
+
+    public function saveenquiry(Request $request)
+    {
+
+        Enquiry::create($request->all());
+
+        return redirect()->route('home');
+    }
 }

@@ -7,12 +7,14 @@ use Illuminate\Validation\Rule;
 class SubCategory extends Model
 {
     protected $fillable = [
-        'name','image_path','category_id'
+        'name','category_id'
     ];
+
     public static function boot()
     {
         parent::boot();
     }
+
     public static function rules($id = '') 
     {
       return [
@@ -22,19 +24,24 @@ class SubCategory extends Model
                 return $query->where('deleted', false);
             })->ignore($id)
           ],
-          'image' => 'mimes:jpeg,jpg,png|max:2048',
-          'category_id' => 'required'
       ];
     }
+
     public static function messages($id = '') 
     {
       return [
           'name.required' => 'You must enter category name.',
           'name.unique' => 'The category name is already exists.',
-          'category_id.required' => 'You must select category.',
       ];
     }
+
     public function category(){
-        $this->belongsTo(Category::class);
+        return $this->belongsTo('App\Category');
     }
+
+    public function products(){
+        return $this->hasMany('App\Product');
+    }
+
+    
 }

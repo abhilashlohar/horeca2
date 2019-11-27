@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrateCategories extends Migration
+class CreateEnquiriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CrateCategories extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('enquiries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->boolean('deleted')->default(false);
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('company')->nullable();
+            $table->text('description')->nullable();
+            $table->text('product_name')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CrateCategories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('enquiries');
     }
 }

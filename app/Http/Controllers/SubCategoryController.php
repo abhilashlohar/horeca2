@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\SubCategory;
 use App\Category;
+use App\SubCategory;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -20,8 +20,13 @@ class SubCategoryController extends Controller
     }
     public function index()
     {
-        $subCategories = SubCategory::latest()->paginate(5);
-        // dd($subCategories);
+        $subCategories = SubCategory::where('deleted',0)->latest()->with('Category')->paginate(5);
+        
+        // foreach ($subCategories as $key => $value) {
+        //     $category = Category::where('id',$value->category_id)->get();
+        //     echo $category; exit()
+        // }
+
         return view('subcategories.index',compact('subCategories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -33,7 +38,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('deleted',0)->latest()->get();
         return view('subcategories.create',compact('categories'));
     }
 
@@ -46,9 +51,8 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate(SubCategory::rules(), SubCategory::messages());
-        $fileName = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('uploads'), $fileName);
-        $request->request->add(['image_path' => $fileName]);
+        
+
         SubCategory::create($request->all());
    
         return redirect()->route('subcategories.index')
@@ -74,7 +78,7 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subcategory)
     {
-        $categories = Category::all();
+        $categories = Category::where('deleted',0)->latest()->get();
         return view('subcategories.edit',compact('subcategory','categories'));
     }
 
@@ -88,17 +92,6 @@ class SubCategoryController extends Controller
     public function update(Request $request, SubCategory $subcategory)
     {
         $request->validate(SubCategory::rules($subcategory->id), SubCategory::messages());
-
-        if($request->has('image'))
-        {
-            $destinationPath = public_path('uploads');
-        
-            File::delete($destinationPath.'/'.$subcategory->image_path);  /// Unlink File
-
-            $fileName = time().'.'.$request->image->extension();  
-            $request->image->move(public_path('uploads'), $fileName);
-            $request->request->add(['image_path' => $fileName]);
-        }
         
         $subcategory->update($request->all());
   
@@ -119,5 +112,11 @@ class SubCategoryController extends Controller
   
         return redirect()->route('subcategories.index')
                         ->with('success','Sub Category deleted successfully');
+    }
+
+    public function list(Request $request)
+    {
+        $subCategories = SubCategory::latest()->where('category_id', $request->category_id)->where('deleted', 0)->get();
+        return view('subcategories.list', compact('subCategories'));
     }
 }

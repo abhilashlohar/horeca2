@@ -1,9 +1,30 @@
 @extends('layouts.front')
 
+@section('headpart')
+<link rel="stylesheet" type="text/css" href="<?php echo url('/'); ?>/assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo url('/'); ?>/assets/css/styleo.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flickity@2/dist/flickity.css">
+  <link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/responsive.css">
+  <link rel="shortcut icon" type="image/png" href="<?php echo url('/'); ?>/assets/img/h.PNG"/>
+<script src="<?php echo url('/'); ?>/assets/js/bootstrap.min.js"></script>
+<script src="<?php echo url('/'); ?>/assets/js/script.js"></script>
+ <script src="<?php echo url('/'); ?>/assets/js/jquery-3.4.1.min.js"></script>
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/ac4e70cd8e.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+@endsection
+
+
 @section('content')
+
 <div class="contact-bg">
                 <h1>Contact us</h1>
-                <div class="row">                   
+                <div style="width:90%; margin: auto;">
+    <div class="row">                   
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 contact-form">
                         <form>
                           <div class="form-group">
@@ -35,6 +56,6 @@
                 </div>
 
                 </div>
+</div>
         </div>
-
-        @endsection
+@endsection

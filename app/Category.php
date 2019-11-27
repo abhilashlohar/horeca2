@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 class Category extends Model
 {
 	protected $fillable = [
-        'name','image_path'
+        'name'
     ];
     public static function boot()
     {
@@ -23,7 +23,6 @@ class Category extends Model
                 return $query->where('deleted', false);
             })->ignore($id)
           ],
-          'image' => 'mimes:jpeg,jpg,png|max:2048',
       ];
     }
     public static function messages($id = '') 

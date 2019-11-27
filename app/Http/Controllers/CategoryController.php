@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\SubCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::latest()->paginate(5);
+        $categories = Category::latest()->where('deleted',0)->paginate(5);
         return view('categories.index',compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -44,9 +45,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate(Category::rules(), Category::messages());
-        $fileName = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('uploads'), $fileName);
-        $request->request->add(['image_path' => $fileName]);
+        
+
         Category::create($request->all());
    
         return redirect()->route('categories.index')
@@ -114,16 +114,21 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->deleted = true;
-        $category->save();
-  
+        if(SubCategory::where('deleted', 1)->where('category_id',$category->id)->doesntExist())
+        {
+            $category->deleted = true;
+            $category->save();
+    
+            return redirect()->route('categories.index')
+                            ->with('success','Category deleted successfully');
+        }
         return redirect()->route('categories.index')
-                        ->with('success','Category deleted successfully');
+                            ->with('success','Category not deleted, exist in sub categories');
     }
 
 
     public static function list()
     {
-        return $categories = Category::all();
+        return $categories = Category::where('deleted',0)->latest()->get();
     }
 }
