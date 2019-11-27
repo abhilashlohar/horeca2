@@ -46,4 +46,9 @@ class HomeController extends Controller
 
         return view('products',compact('category', 'SubCategories'));
     }    
+    
+    public static function enquiry(Request $request)
+    {
+        return view('enquiry');
+    }
 }
