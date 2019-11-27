@@ -79,9 +79,8 @@
                 <div class="modal-dialog modal-bg" role="document">
                   <h3>Request a Quote</h3>
             
-        <form action="{{ route('saveenquiry', $product->id) }}" method="POST">
+        <form action="{{ route('saveenquiry', $product->id) }}" method="POST" class="modal-content">
         @csrf
-            <form class="modal-content">
                 
                 <input type="hidden" name="product_name" value="{{ $product->name }}">
                 <div class="form-row">
