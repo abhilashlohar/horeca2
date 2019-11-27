@@ -28,5 +28,5 @@ Route::post('/saveenquiry/{id}', 'HomeController@saveenquiry')->name('saveenquir
 Route::resource('categories','CategoryController');
 Route::resource('subcategories','SubCategoryController');
 Route::resource('products','ProductController');
-
+Route::get('/enquiry-list', 'EnquiryController@index')->name('enquirylist');
 Route::post('/subcategorieslist', 'SubCategoryController@list')->name('subcategories.list');
