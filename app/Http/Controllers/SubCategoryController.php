@@ -38,7 +38,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('deleted',0)->latest()->get();
         return view('subcategories.create',compact('categories'));
     }
 
@@ -78,7 +78,7 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subcategory)
     {
-        $categories = Category::all();
+        $categories = Category::where('deleted',0)->latest()->get();
         return view('subcategories.edit',compact('subcategory','categories'));
     }
 
@@ -92,17 +92,6 @@ class SubCategoryController extends Controller
     public function update(Request $request, SubCategory $subcategory)
     {
         $request->validate(SubCategory::rules($subcategory->id), SubCategory::messages());
-
-        if($request->has('image'))
-        {
-            $destinationPath = public_path('uploads');
-        
-            File::delete($destinationPath.'/'.$subcategory->image_path);  /// Unlink File
-
-            $fileName = time().'.'.$request->image->extension();  
-            $request->image->move(public_path('uploads'), $fileName);
-            $request->request->add(['image_path' => $fileName]);
-        }
         
         $subcategory->update($request->all());
   
@@ -127,7 +116,7 @@ class SubCategoryController extends Controller
 
     public function list(Request $request)
     {
-        $subCategories = SubCategory::latest()->where('category_id', $request->category_id)->get();
+        $subCategories = SubCategory::latest()->where('category_id', $request->category_id)->where('deleted', 0)->get();
         return view('subcategories.list', compact('subCategories'));
     }
 }
