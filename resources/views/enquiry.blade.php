@@ -1,11 +1,26 @@
 @extends('layouts.front')
 
 @section('headpart')
+
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/magnific-popup.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/animate.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/slinky.min.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/meanmenu.min.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/jquery-ui.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/slick.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/ionicons.min.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/bundle.css">
+<link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/responsive.css">
+    <!-- index index-->
 <link rel="stylesheet" type="text/css" href="<?php echo url('/'); ?>/assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo url('/'); ?>/assets/css/styleo.css">
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flickity@2/dist/flickity.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Actor|Alegreya+Sans+SC|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo url('/'); ?>/assets/css/responsive.css">
-  <link rel="shortcut icon" type="image/png" href="<?php echo url('/'); ?>/assets/img/h.PNG"/>
+
 <script src="<?php echo url('/'); ?>/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo url('/'); ?>/assets/js/script.js"></script>
  <script src="<?php echo url('/'); ?>/assets/js/jquery-3.4.1.min.js"></script>
@@ -15,7 +30,10 @@
   crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/ac4e70cd8e.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="<?php echo url('/'); ?>/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
+</head>
+<body class="body-bg">
 @endsection
 
 
@@ -40,7 +58,7 @@
 
                   <h3>{{ $product->name }}</h3>
                   <p>{{ $product->description }}</p>
-                     <!-- <div class="quick-view-select">
+                     <div class="quick-view-select">
                         <div class="select-option-part">
                             <label>Dimension*</label>
                             <select class="select">
@@ -59,7 +77,7 @@
                                 <option value="">Grey</option>
                             </select>
                         </div>
-                    </div> -->
+                    </div>
 
                     
                   <div class="quickview-plus-minus">

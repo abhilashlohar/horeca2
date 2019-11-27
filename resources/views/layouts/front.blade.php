@@ -15,8 +15,7 @@ $categories = CategoryController::list();
 
         @yield ('headpart')
 
-    </head>
-    <body>
+   
         
         <div class="container-fluid">
             <div class="">
