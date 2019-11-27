@@ -48,24 +48,25 @@
     <div class="cat-series">
         @foreach ($SubCategories as $SubCategory)
         
-        <h3 class="product-subhead one">{{ $SubCategory->name }}</h3>
-        <h3 class="product-subhead one">{{ $SubCategory->products }}</h3>
+        <?php if (count($SubCategory->products)>0) { ?>
+            <h3 class="product-subhead one">{{ $SubCategory->name }}</h3>
             <div class="shop-product-content tab-content">
                 <div id="grid-5-col1" class="tab-pane fade active show">
                     <div class="row custom-row">
+                        @foreach ($SubCategory->products as $product)
                         <div class="custom-col-5 custom-col-style">
                             <div class="single-product mb-35">
                                 <div class="product-img">
                                     <a href="#"><img src="<?php echo url('/'); ?>/assets/img/shop/shop-grid-1/2.jpg" alt=""></a>
                                     <div class="product-action">
                                         <!-- <a title="Wishlist" class="animate-left" href="#"><i class="ion-ios-heart-outline"></i></a> -->
-                                        <a style="padding: 10px;" class="animate-right" href="enquire.html">Enquire </a>
+                                        <a style="padding: 10px;" class="animate-right" href="{{ route('enquiry', $product->id) }}">Enquire </a>
                                     </div>
                                 </div>
                                 <div class="product-content">
                                     <div class="product-title-price">
                                         <div class="product-title">
-                                            <h4>CHAPATI HOT PLATE</h4>
+                                            <h4>{{ $product->name }}</h4>
                                         </div>
                                        <!--  <div class="product-price">
                                             <span>Rs.xyz</span>
@@ -75,96 +76,7 @@
                                 </div>
                             </div>
                        </div>
-                        <div class="custom-col-5 custom-col-style">
-                            <div class="single-product mb-35">
-                                <div class="product-img">
-                                    <a href="#"><img src="<?php echo url('/'); ?>/assets/img/shop/shop-grid-1/1.jpg" alt=""></a>
-                                    
-                                    <div class="product-action">
-                                        <!-- <a title="Wishlist" class="animate-left" href="#"><i class="ion-ios-heart-outline"></i></a> -->
-                                         <a style="padding: 10px;" class="animate-right" href="enquire.html">Enquire </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="product-title-price">
-                                        <div class="product-title">
-                                            <h4>GRIDDLE HOT PLATE</h4>
-                                        </div>
-                                      <!--   <div class="product-price">
-                                            <span>Rs.xyz</span>
-                                        </div> -->
-                                    </div>
-                             
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-col-5 custom-col-style">
-                            <div class="single-product mb-35">
-                                <div class="product-img">
-                                    <a href="#"><img src="<?php echo url('/'); ?>/assets/img/shop/shop-grid-1/3.jpg" alt=""></a>
-                                    <div class="product-action">
-                                       <!--  <a title="Wishlist" class="animate-left" href="#"><i class="ion-ios-heart-outline"></i></a> -->
-                                      <a style="padding: 10px;" class="animate-right" href="enquire.html">Enquire </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="product-title-price">
-                                        <div class="product-title">
-                                            <h4>PORTABLE BURNER</h4>
-                                        </div>
-                                      <!--   <div class="product-price">
-                                            <span>Rs.xyz</span>
-                                        </div> -->
-                                    </div>
-                                  
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-col-5 custom-col-style">
-                            <div class="single-product mb-35">
-                                <div class="product-img">
-                                    <a href="#"><img src="<?php echo url('/'); ?>/assets/img/shop/shop-grid-1/4.jpg" alt=""></a>
-                                   
-                                    <div class="product-action">
-                                       <!--  <a title="Wishlist" class="animate-left" href="#"><i class="ion-ios-heart-outline"></i></a> -->
-                                      <a style="padding: 10px;" class="animate-right" href="enquire.html">Enquire </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="product-title-price">
-                                        <div class="product-title">
-                                            <h4>DOSA HOT PLATE</h4>
-                                        </div>
-                                       <!--  <div class="product-price">
-                                            <span>Rs.xyz</span>
-                                        </div> -->
-                                    </div>
-                                 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="custom-col-5 custom-col-style">
-                            <div class="single-product mb-35">
-                                <div class="product-img">
-                                    <a href="#"><img src="<?php echo url('/'); ?>/assets/img/shop/shop-grid-1/5.jpg" alt=""></a>
-                                    <div class="product-action">
-                                       
-                                        <a style="padding: 10px;" class="animate-right" href="enquire.html">Enquire </a>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="product-title-price">
-                                        <div class="product-title">
-                                            <h4>DEEP FRYER</h4>
-                                        </div>
-                                      
-                                    </div>
-                          
-                                </div>
-                            </div>
-                        </div>
-               
-             
+                       @endforeach
                  </div>
 
 
@@ -172,6 +84,8 @@
                 </div>
               
             </div>
+        <?php } ?>
+        
 
         @endforeach
 

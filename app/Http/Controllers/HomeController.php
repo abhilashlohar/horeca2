@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\SubCategory;
 use App\Product;
+use App\Enquiry;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['home', 'contact']);;
+        $this->middleware('auth')->except(['home', 'contact', 'products', 'enquiry', 'saveenquiry']);;
     }
 
     /**
@@ -49,6 +50,15 @@ class HomeController extends Controller
     
     public static function enquiry(Request $request)
     {
-        return view('enquiry');
+        $product = Product::where('id',$request->id)->first();
+        return view('enquiry',compact('product'));
+    }
+
+    public function saveenquiry(Request $request)
+    {
+
+        Enquiry::create($request->all());
+
+        return redirect()->route('home');
     }
 }

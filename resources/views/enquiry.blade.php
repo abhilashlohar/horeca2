@@ -33,41 +33,62 @@
 
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 body-content">
 
-                  <h3>Product Heading</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation.Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi.tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi. </p>
-                     <div class="quick-view-select">
-                                        <div class="select-option-part">
-                                            <label>Dimension*</label>
-                                            <select class="select">
-                                                <option value="">- Please Select -</option>
-                                                <option value="">x</option>
-                                                <option value="">y</option>
-                                                <option value="">z</option>
-                                            </select>
-                                        </div>
-                                        <div class="select-option-part">
-                                            <label>Color*</label>
-                                            <select class="select">
-                                                <option value="">- Please Select -</option>
-                                                <option value="">Black</option>
-                                                <option value="">Beige</option>
-                                                <option value="">Grey</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                      <div class="quickview-plus-minus">
-                                        <div class="quickview-btn-cart">
-                                            <a title="Quick View" data-toggle="modal" style="padding: 10px;" data-target="#exampleModal" class="animate-right" href="#">Enquire Now</a>
-                                        </div>
-                                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                      Open modal
-                    </button> -->
-                                    </div>
+                  <h3>{{ $product->name }}</h3>
+                  <p>{{ $product->description }}</p>
+                     <!-- <div class="quick-view-select">
+                        <div class="select-option-part">
+                            <label>Dimension*</label>
+                            <select class="select">
+                                <option value="">- Please Select -</option>
+                                <option value="">x</option>
+                                <option value="">y</option>
+                                <option value="">z</option>
+                            </select>
+                        </div>
+                        <div class="select-option-part">
+                            <label>Color*</label>
+                            <select class="select">
+                                <option value="">- Please Select -</option>
+                                <option value="">Black</option>
+                                <option value="">Beige</option>
+                                <option value="">Grey</option>
+                            </select>
+                        </div>
+                    </div> -->
 
+                    <form action="{{ route('saveenquiry', $product->id) }}" method="POST">
+        @csrf
+            <form class="modal-content">
+                    
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label for="Contact">Contact Number</label>
+                    <input type="text" name="name" class="form-control" id="contact" placeholder="Contact Number" required>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                  </div>
+                   
+                  <div class="form-group col-md-6">
+                    <label for="Company">Organization / Company</label>
+                    <input type="text" name="company" class="form-control" id="Company" placeholder="Company" required>
+                  </div>
                 </div>
-
-
-          </div>
+                <div class="form-group">
+                  <label for="notes">Notes</label>
+                  <input type="text" name="description" class="form-control" id="notes" placeholder="xyz" required>
+                </div>
+                <button type="submit" class="btn" style="background-color: #e61c6f; color: #fff; display: inline-block; letter-spacing: 0.08px; line-height: 1; padding: 17px 35px; position: relative; z-index: 5; padding: 15px; border-radius: 5px;">Send Enquiry</button>
+          </form>
+                  <!-- <div class="quickview-plus-minus">
+                    <div class="quickview-btn-cart">
+                        <a title="Quick View" data-toggle="modal" style="padding: 10px;" data-target="#exampleModal" class="animate-right" href="#">Enquire Now</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
 
 
       </div>
@@ -77,7 +98,10 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <div class="modal-dialog modal-bg" role="document">
                   <h3>Request a Quote</h3>
-                   <form class="modal-content">
+            
+        <form action="{{ route('saveenquiry', $product->id) }}" method="POST">
+        @csrf
+            <form class="modal-content">
                     
                 <div class="form-row">
                   <div class="form-group col-md-6">
