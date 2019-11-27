@@ -16,7 +16,6 @@ class CrateCategories extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('image_path');
             $table->boolean('deleted')->default(false);
             $table->timestamps();
         });

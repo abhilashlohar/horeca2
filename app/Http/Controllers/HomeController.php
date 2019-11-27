@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['home', 'contact']);;
     }
 
     /**
@@ -21,7 +21,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function home()
     {
         return view('home');
     }
@@ -29,6 +29,11 @@ class HomeController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');
     }
     
 }

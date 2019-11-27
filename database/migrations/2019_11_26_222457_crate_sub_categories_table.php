@@ -15,12 +15,13 @@ class CrateSubCategoriesTable extends Migration
     {
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('category_id');
-            // $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('category_id');
             $table->string('name');
-            $table->string('image_path');
             $table->boolean('deleted')->default(false);
             $table->timestamps();
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories');
         });
     }
 

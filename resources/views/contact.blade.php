@@ -1,9 +1,11 @@
 @extends('layouts.front')
 
 @section('content')
+
 <div class="contact-bg">
                 <h1>Contact us</h1>
-                <div class="row">                   
+                <div style="width:90%; margin: auto;">
+    <div class="row">                   
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 contact-form">
                         <form>
                           <div class="form-group">
@@ -35,6 +37,6 @@
                 </div>
 
                 </div>
+</div>
         </div>
-
-        @endsection
+@endsection

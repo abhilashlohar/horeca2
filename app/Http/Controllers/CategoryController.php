@@ -20,7 +20,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::latest()->paginate(5);
+        $categories = Category::latest()->where('deleted',0)->paginate(5);
         return view('categories.index',compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -44,9 +44,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate(Category::rules(), Category::messages());
-        $fileName = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('uploads'), $fileName);
-        $request->request->add(['image_path' => $fileName]);
+        
+
         Category::create($request->all());
    
         return redirect()->route('categories.index')

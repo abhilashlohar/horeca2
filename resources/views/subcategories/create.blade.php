@@ -16,7 +16,7 @@
 
                             <div class="col-md-6">
                                 <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @enderror" required>
-                                    <option value="">---Select Category---</option>
+                                    <option value="">---Select---</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -42,19 +42,8 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
 
-                            <div class="col-md-6">
-                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" class="form-control" required="">
-
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
