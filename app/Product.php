@@ -14,18 +14,34 @@ class Product extends Model
     {
         parent::boot();
     }
-    public static function rules($id = '') 
+    public static function rules($id = '')
     {
       return [
           'name' => [
-            'required', 
+            'required',
           ],
+          'category_id' => [
+            'required',
+          ],
+          'sub_category_id' => [
+            'required',
+          ],
+          'image' => 'mimes:jpeg,jpg,png|max:2048',
       ];
     }
-    public static function messages($id = '') 
+    public static function messages($id = '')
     {
       return [
           'name.required' => 'You must enter product name.',
+          'category_id.required' => 'You must select category.',
+          'sub_category_id.required' => 'You must select sub category.',
+          'image.required' => 'You must select image.',
       ];
+    }
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+    public function subCategory(){
+        return $this->belongsTo('App\SubCategory');
     }
 }
