@@ -73,8 +73,8 @@
             </li>
             <li class="nav-item p-1">
               <a class="nav-link" href="{{route('enquirylist')}}" style="text-align: center;">
-                <img src="/img/product.png" style="height: 40px;"><br/>
-                <span style=" color: #FEFEFE; font-size: 14px;">  Product </span> 
+                <img src="/img/enquiry.png" style="height: 40px;"><br/>
+                <span style=" color: #FEFEFE; font-size: 14px;">  Enquiry </span> 
               </a>
             </li>
           </ul>
