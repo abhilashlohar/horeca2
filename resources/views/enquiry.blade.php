@@ -61,7 +61,25 @@
                         </div>
                     </div> -->
 
-                    <form action="{{ route('saveenquiry', $product->id) }}" method="POST">
+                    
+                  <div class="quickview-plus-minus">
+                    <div class="quickview-btn-cart">
+                        <a title="Quick View" data-toggle="modal" style="padding: 10px;" data-target="#exampleModal" class="animate-right" href="#">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-dialog modal-bg" role="document">
+                  <h3>Request a Quote</h3>
+            
+        <form action="{{ route('saveenquiry', $product->id) }}" method="POST">
         @csrf
             <form class="modal-content">
                 
@@ -87,51 +105,6 @@
                   <input type="text" name="description" class="form-control" id="notes" placeholder="xyz" required>
                 </div>
                 <button type="submit" class="btn" style="background-color: #e61c6f; color: #fff; display: inline-block; letter-spacing: 0.08px; line-height: 1; padding: 17px 35px; position: relative; z-index: 5; padding: 15px; border-radius: 5px;">Send Enquiry</button>
-          </form>
-                  <!-- <div class="quickview-plus-minus">
-                    <div class="quickview-btn-cart">
-                        <a title="Quick View" data-toggle="modal" style="padding: 10px;" data-target="#exampleModal" class="animate-right" href="#">Enquire Now</a>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-
-
-      </div>
-
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class="modal-dialog modal-bg" role="document">
-                  <h3>Request a Quote</h3>
-            
-        <form action="{{ route('saveenquiry', $product->id) }}" method="POST">
-        @csrf
-            <form class="modal-content">
-                    
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                  </div>
-                   <div class="form-group col-md-6">
-                    <label for="Contact">Contact Number</label>
-                    <input type="text" class="form-control" id="contact" placeholder="Contact Number">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="Company">Organization / Company</label>
-                    <input type="text" class="form-control" id="Company" placeholder="Company">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="notes">Notes</label>
-                  <input type="text" class="form-control" id="notes" placeholder="xyz">
-                </div>
-                <button type="submit" class="btn">Submit</button>
           </form>
 
                 </div>
