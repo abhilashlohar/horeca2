@@ -58,7 +58,7 @@
 
                   <h3>{{ $product->name }}</h3>
                   <p>{{ $product->description }}</p>
-                     <div class="quick-view-select">
+                     <!-- <div class="quick-view-select">
                         <div class="select-option-part">
                             <label>Dimension*</label>
                             <select class="select">
@@ -77,7 +77,7 @@
                                 <option value="">Grey</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
 
                     
                   <div class="quickview-plus-minus">
