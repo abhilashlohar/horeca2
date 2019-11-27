@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Add New Product') }}</div>
 
                 <div class="card-body">
-               
+
                     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
@@ -63,9 +63,27 @@
                             <label for="sub_category_id" class="col-md-4 col-form-label text-md-right">{{ __('Sub Category') }}</label>
 
                             <div class="col-md-6">
-                                <select id="sub_category_id" name="sub_category_id" class="form-control">
+                                <select id="sub_category_id" name="sub_category_id" class="form-control @error('sub_category_id') is-invalid @enderror" required>
                                     <option value="">--Select--</option>
                                 </select>
+                                @error('sub_category_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" class="form-control" required="">
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -77,7 +95,7 @@
                                 <a class="btn btn-light" href="{{ route('products.index') }}">Cancel</a>
                             </div>
                         </div>
-                      
+
                     </form>
 
                 </div>
@@ -100,7 +118,7 @@ $( document ).ready(function() {
 
     $( "#category_id" ).on( "change", function() {
         var category_id = $(this).val();
-        
+
         $.ajax({
            type:'POST',
            url:"{{ route('subcategories.list') }}",

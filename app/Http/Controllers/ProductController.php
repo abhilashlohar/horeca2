@@ -16,7 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::latest()->with('category','subCategory')->paginate(5);
+        // dd($products);
+          return view('products.index',compact('products'))
+              ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -39,10 +42,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate(Product::rules(), Product::messages());
-        
+
+        $fileName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('uploads'), $fileName);
+        $request->request->add(['image_path' => $fileName]);
 
         Product::create($request->all());
-   
+
         return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
     }
@@ -64,9 +70,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        //dd($product);
+        $categories = Category::all();
+        $subcategory = SubCategory::find($product->sub_category_id);
+        return view('products.edit',compact('product','categories','subcategory'));
     }
 
     /**
@@ -76,9 +85,25 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Product $product)
+    {   //dd($request);
+        $request->validate(Product::rules($product->id), Product::messages());
+       
+        if($request->image->has())
+        {
+            $destinationPath = public_path('uploads');
+        
+            File::delete($destinationPath.'/'.$product->image_path);  /// Unlink File
+
+            $fileName = time().'.'.$request->image->extension();  
+            $request->image->move(public_path('uploads'), $fileName);
+            $request->request->add(['image_path' => $fileName]);
+        }
+        
+        $product->update($request->all());
+  
+        return redirect()->route('products.index')
+                        ->with('success','Product updated successfully');
     }
 
     /**
@@ -87,9 +112,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->deleted = true;
+        $product->save();
+  
+        return redirect()->route('products.index')
+                        ->with('success','Product deleted successfully');
     }
 
     

@@ -1,13 +1,13 @@
 @extends('layouts.dashboard')
- 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <span class="float-left">{{ __('Category') }}</span>
-                    <a class="float-right" href="{{ route('categories.create') }}">New</a>
+                    <span class="float-left">{{ __('Product') }}</span>
+                    <a class="float-right" href="{{ route('products.create') }}">New</a>
                 </div>
 
                 <div class="card-body">
@@ -15,28 +15,32 @@
                    <table class="table table-sm tblborder">
                         <tr>
                             <th>Name</th>
+                            <th>Category Name</th>
+                            <th>Sub Category Name</th>
                             <th width="280px">Action</th>
                         </tr>
-                        @foreach ($categories as $category)
+                        @foreach ($products as $product)
                         <tr>
-                            <td>{{ $category->name }}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->category->name }}</td>
+                            <td>{{ $product->subCategory->name }}</td>
                             <td>
-                                <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
-                   
-                                    <a class="btn btn-sm btn-light" href="{{route('categories.edit',$category->id)}}">
+                                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+
+                                    <a class="btn btn-sm btn-light" href="{{route('products.edit',$product->id)}}">
                                       <i class="fas fa-edit"></i>
                                     </a>
-                   
+
                                     @csrf
                                     @method('DELETE')
-                      
+
                                     <button class="btn btn-sm btn-light" type="submit"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                     </table>
-                    {!! $categories->links() !!}
+                    {!! $products->links() !!}
 
                 </div>
             </div>
