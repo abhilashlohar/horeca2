@@ -57,7 +57,13 @@
                         <div class="custom-col-5 custom-col-style">
                             <div class="single-product mb-35">
                                 <div class="product-img">
-                                    <a href="#"><img src="<?php echo url('/'); ?>/assets/img/shop/shop-grid-1/2.jpg" alt=""></a>
+                                    <a href="#">
+                                        <?php if ($product->image_path) { ?>
+                                            <img src="<?php echo url('/'); ?>/uploads/<?php echo $product->image_path; ?>" alt="">
+                                        <?php } else { ?>
+                                            <img src="<?php echo url('/'); ?>/assets/img/shop/shop-grid-1/2.jpg" alt="">
+                                        <?php } ?>
+                                    </a>
                                     <div class="product-action">
                                         <!-- <a title="Wishlist" class="animate-left" href="#"><i class="ion-ios-heart-outline"></i></a> -->
                                         <a style="padding: 10px;" class="animate-right" href="{{ route('enquiry', $product->id) }}">Enquire </a>

@@ -19,6 +19,7 @@ class CreateEnquiriesTable extends Migration
             $table->string('email')->nullable();
             $table->string('company')->nullable();
             $table->text('description')->nullable();
+            $table->text('product_name')->nullable();
             $table->timestamps();
         });
     }

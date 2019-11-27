@@ -27,7 +27,12 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 product-image">
 
-                  <img src="<?php echo url('/'); ?>/assets/img/quick-view/l1.jpg">  
+                <?php if ($product->image_path) { ?>
+                    <img src="<?php echo url('/'); ?>/uploads/<?php echo $product->image_path; ?>" alt="">
+                <?php } else { ?>
+                    <img src="<?php echo url('/'); ?>/assets/img/quick-view/l1.jpg"> 
+                <?php } ?>
+                   
 
                 </div>
 
@@ -59,7 +64,8 @@
                     <form action="{{ route('saveenquiry', $product->id) }}" method="POST">
         @csrf
             <form class="modal-content">
-                    
+                
+                <input type="hidden" name="product_name" value="{{ $product->name }}">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                     <label for="Contact">Contact Number</label>
