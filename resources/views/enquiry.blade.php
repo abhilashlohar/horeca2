@@ -121,7 +121,7 @@
                   <label for="notes">Notes</label>
                   <input type="text" name="description" class="form-control" id="notes" placeholder="xyz" required>
                 </div>
-                <button type="submit" class="btn" style="background-color: #e61c6f; color: #fff; display: inline-block; letter-spacing: 0.08px; line-height: 1; padding: 17px 35px; position: relative; z-index: 5; padding: 15px; border-radius: 5px;">Send Enquiry</button>
+                <button type="submit" class="btn" style="background-color: #e61c6f; color: #fff; display: inline-block; letter-spacing: 0.08px; line-height: 1;  position: relative; z-index: 5;  border-radius: 5px;">Send Enquiry</button>
           </form>
 
                 </div>
